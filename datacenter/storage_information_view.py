@@ -20,7 +20,9 @@ def storage_information_view(request):
             {
                 'visitor_name': visitor.passcard.owner_name,
                 'entered_at': visitor.entered_at,
-                'visit_duration': format_duration(visit_duration.total_seconds()),
+                'visit_duration': format_duration(
+                    visit_duration.total_seconds(),
+                ),
                 'is_visit_long': is_visit_long(visit_duration.total_seconds()),
             }
         )

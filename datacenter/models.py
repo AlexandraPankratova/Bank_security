@@ -24,7 +24,8 @@ class Visit(models.Model):
         return "{user} entered at {entered} {leaved}".format(
             user=self.passcard.owner_name,
             entered=self.entered_at,
-            leaved="leaved at "+str(self.leaved_at) if self.leaved_at else "not leaved"
+            leaved="leaved at "
+                   + str(self.leaved_at) if self.leaved_at else "not leaved",
         )
 
 
@@ -39,7 +40,8 @@ def get_duration(entered_at, leaved_at):
 
 def format_duration(visit_duration_in_seconds):
     visit_duration_hours = visit_duration_in_seconds // 3600
-    visit_duration_minutes = (visit_duration_in_seconds - visit_duration_hours*3600) // 60
+    visit_duration_minutes = (visit_duration_in_seconds
+                              - visit_duration_hours*3600) // 60
     visit_duration_seconds = visit_duration_in_seconds % 60
     visit_duration = '{:.0f}:{:.0f}:{:.0f}'.format(
         visit_duration_hours,
